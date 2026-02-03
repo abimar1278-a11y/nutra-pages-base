@@ -5,7 +5,8 @@
   <title>Official Site</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ===== PIXEL (ATIVAR QUANDO TIVER O ID) ===== -->
+  <!-- ================= PIXEL FACEBOOK / META ================= -->
+  <!-- Cole seu PIXEL ID no lugar de SEU_PIXEL_ID_AQUI -->
   <!--
   <script>
     !function(f,b,e,v,n,t,s)
@@ -20,6 +21,7 @@
     fbq('track', 'PageView');
   </script>
   -->
+  <!-- =========================================================== -->
 
   <style>
     body {
@@ -30,6 +32,7 @@
       text-align: center;
     }
 
+    /* TOPO */
     .top-bar {
       background: #e60000;
       color: #fff;
@@ -50,14 +53,16 @@
       margin: 0 20px 30px;
     }
 
+    /* VÍDEO */
     .video-wrapper {
       max-width: 720px;
       margin: 0 auto;
       padding: 15px;
       border: 3px solid #0033cc;
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
+    /* CTA */
     .cta-section {
       display: none;
       margin: 50px auto;
@@ -65,39 +70,39 @@
       padding: 20px;
     }
 
-    /* ===== OFFER CARDS ===== */
-
     .offers {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
+      gap: 20px;
     }
 
     .offer-card {
-      background: #1f3f6e;
-      color: #fff;
+      border: 2px solid #0033cc;
       border-radius: 18px;
-      padding: 25px;
-      width: 320px;
+      padding: 20px;
+      width: 300px;
       position: relative;
     }
 
     .offer-badge {
-      background: #ffd400;
-      color: #000;
-      font-weight: bold;
-      padding: 8px 14px;
-      border-radius: 10px;
       position: absolute;
-      top: -15px;
+      top: -14px;
       left: 50%;
       transform: translateX(-50%);
+      background: #0033cc;
+      color: #fff;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 20px;
     }
 
     .offer-title {
       font-size: 22px;
-      margin-top: 25px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #0033cc;
     }
 
     .offer-sub {
@@ -106,20 +111,22 @@
     }
 
     .offer-img {
-      max-width: 200px;
+      max-width: 180px;
       margin: 15px auto;
     }
 
     .offer-price {
-      font-size: 38px;
+      font-size: 30px;
       font-weight: bold;
       margin: 10px 0;
     }
 
     .offer-list {
-      text-align: left;
+      list-style: none;
+      padding: 0;
       font-size: 14px;
       margin: 15px 0;
+      text-align: left;
     }
 
     .offer-list li {
@@ -127,19 +134,19 @@
     }
 
     .offer-btn {
-      display: block;
+      display: inline-block;
       background: #7acb00;
       color: #000;
-      padding: 16px;
-      border-radius: 14px;
+      padding: 16px 26px;
+      margin-top: 15px;
+      font-size: 16px;
       font-weight: bold;
       text-decoration: none;
-      font-size: 18px;
-      margin-top: 15px;
+      border-radius: 12px;
     }
 
     .guarantee {
-      margin: 40px 20px;
+      margin: 50px 20px;
       font-size: 16px;
     }
 
@@ -150,79 +157,90 @@
       color: #666;
       background: #f2f2f2;
     }
+
+    @media (max-width: 768px) {
+      .offer-card {
+        width: 100%;
+        max-width: 340px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="top-bar">Scientific News</div>
-
-  <h1>WHY METABOLIC BALANCE MATTERS MORE THAN EXTREME DIETS AFTER 30</h1>
-
-  <h2>How nutritional support may help maintain healthy metabolic function over time.</h2>
-
-  <div class="video-wrapper">
-    <p><strong>[ VIDEO DA VSL AQUI ]</strong></p>
+  <!-- BARRA VERMELHA -->
+  <div class="top-bar">
+    Scientific News
   </div>
 
-  <!-- CTA -->
+  <!-- HEADLINE -->
+  <h1>
+    WHY METABOLIC BALANCE MATTERS MORE THAN EXTREME DIETS AFTER 30
+  </h1>
+
+  <h2>
+    How nutritional support may help maintain healthy metabolic function over time.
+  </h2>
+
+  <!-- VSL -->
+  <div class="video-wrapper">
+    <!-- COLE AQUI O EMBED DA VETURB -->
+    <!-- Exemplo:
+    <iframe src="https://player.veturb.com/SEU_VIDEO"
+      width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+    -->
+    <strong>[ VIDEO DA VSL AQUI ]</strong>
+  </div>
+
+  <!-- CTA (DELAY) -->
   <div class="cta-section" id="cta">
+
     <h2>Choose Your Package</h2>
 
     <div class="offers">
 
       <!-- 12 BOTTLES -->
       <div class="offer-card">
-        <div class="offer-badge">BEST VALUE!</div>
+        <div class="offer-badge">BEST VALUE</div>
         <div class="offer-title">12 BOTTLES</div>
         <div class="offer-sub">EXTENDED PROTOCOL</div>
-
         <img src="IMAGEM_12_BOTTLES.png" class="offer-img">
-
         <div class="offer-price">$38 <small>/ bottle</small></div>
-
         <ul class="offer-list">
-          <li>✔ You save $468</li>
           <li>✔ Biggest discount</li>
           <li>✔ 90-day guarantee</li>
           <li>✔ Free shipping</li>
         </ul>
-
         <a href="LINK_CHECKOUT_12" class="offer-btn">EXTENDED PROTOCOL</a>
       </div>
 
       <!-- 6 BOTTLES -->
       <div class="offer-card">
+        <div class="offer-badge">MOST POPULAR</div>
         <div class="offer-title">6 BOTTLES</div>
         <div class="offer-sub">COMPLETE 180-DAY</div>
-
         <img src="IMAGEM_6_BOTTLES.png" class="offer-img">
-
         <div class="offer-price">$48 <small>/ bottle</small></div>
-
         <ul class="offer-list">
-          <li>✔ Most popular choice</li>
+          <li>✔ Most chosen package</li>
           <li>✔ 90-day guarantee</li>
           <li>✔ Free shipping</li>
         </ul>
-
         <a href="LINK_CHECKOUT_6" class="offer-btn">COMPLETE 180-DAY</a>
       </div>
 
       <!-- 3 BOTTLES -->
       <div class="offer-card">
+        <div class="offer-badge">BASIC</div>
         <div class="offer-title">3 BOTTLES</div>
         <div class="offer-sub">MINIMUM 90-DAY</div>
-
         <img src="IMAGEM_3_BOTTLES.png" class="offer-img">
-
         <div class="offer-price">$78 <small>/ bottle</small></div>
-
         <ul class="offer-list">
           <li>✔ Starter package</li>
           <li>✔ 90-day guarantee</li>
         </ul>
-
         <a href="LINK_CHECKOUT_3" class="offer-btn">MINIMUM 90-DAY</a>
       </div>
 
@@ -232,6 +250,7 @@
       <strong>100% Satisfaction Guaranteed</strong><br>
       90-day money-back guarantee.
     </div>
+
   </div>
 
   <footer>
@@ -239,10 +258,11 @@
     <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
   </footer>
 
+  <!-- DELAY CTA -->
   <script>
     setTimeout(function () {
       document.getElementById("cta").style.display = "block";
-    }, 5000); // depois volte para 180000
+    }, 180000); // 3 minutos (para teste use 5000)
   </script>
 
 </body>
