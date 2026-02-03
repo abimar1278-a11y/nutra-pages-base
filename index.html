@@ -1,189 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Scientific News</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Official Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- PIXEL (adicione depois se quiser) -->
-<!--
-<script>
-fbq('init', 'SEU_PIXEL_AQUI');
-fbq('track', 'PageView');
-</script>
--->
+  <!-- ===== PIXEL (COLE AQUI O PIXEL DO PRODUTO) ===== -->
+  <!-- Facebook / Meta Pixel -->
+  <!--
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_PIXEL_ID_AQUI');
+    fbq('track', 'PageView');
+  </script>
+  -->
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #ffffff;
-  color: #111;
-  text-align: center;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #000;
+      text-align: center;
+    }
 
-/* TOP BAR */
-.top-bar {
-  background: #e41e26;
-  color: #fff;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 14px;
-}
+    .top-bar {
+      background: #e60000;
+      color: #fff;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-/* HEADLINE */
-h1 {
-  color: #0a33ff;
-  font-size: 28px;
-  padding: 20px;
-  margin-bottom: 5px;
-}
+    h1 {
+      color: #0033cc;
+      font-size: 28px;
+      margin: 30px 20px 10px;
+    }
 
-.subtitle {
-  font-size: 16px;
-  color: #333;
-  padding: 0 20px 20px;
-}
+    h2 {
+      font-size: 18px;
+      font-weight: normal;
+      margin: 0 20px 30px;
+    }
 
-/* CONTAINER */
-.container {
-  max-width: 720px;
-  margin: auto;
-  padding: 10px;
-}
+    .video-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 15px;
+      border: 3px solid #0033cc;
+      border-radius: 12px;
+    }
 
-/* VIDEO */
-.video-box {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  border-radius: 12px;
-  border: 3px solid #2b6cff;
-}
+    .cta-section {
+      display: none;
+      margin: 40px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
 
-.video-box iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
+    .offer {
+      border: 2px solid #0033cc;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px;
+    }
 
-/* CTA BLOCK */
-#cta-block {
-  display: none;
-  margin-top: 30px;
-}
+    .offer h3 {
+      color: #0033cc;
+    }
 
-/* OFFER BOX */
-.offer {
-  border: 3px solid #2b6cff;
-  border-radius: 16px;
-  padding: 20px;
-  margin: 20px;
-}
+    .price {
+      font-size: 32px;
+      font-weight: bold;
+    }
 
-.offer.best {
-  background: #1f3d66;
-  color: #fff;
-}
+    .btn {
+      display: inline-block;
+      background: #7acb00;
+      color: #000;
+      padding: 18px 30px;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 12px;
+    }
 
-.offer h2 {
-  margin: 10px 0;
-}
+    .guarantee {
+      margin: 40px 20px;
+      font-size: 16px;
+    }
 
-.price {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.cta-button {
-  display: block;
-  background: #7bd300;
-  color: #111;
-  font-weight: bold;
-  padding: 18px;
-  border-radius: 10px;
-  text-decoration: none;
-  margin-top: 20px;
-}
-
-/* PRODUCT IMAGE */
-.product-img {
-  max-width: 260px;
-  margin: 20px auto;
-}
-
-/* FOOTER */
-footer {
-  font-size: 12px;
-  color: #666;
-  margin: 40px 0 20px;
-}
-</style>
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+      background: #f2f2f2;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="top-bar">Scientific News</div>
-
-<h1>Why Metabolic Balance Matters More Than Extreme Diets After 30</h1>
-<div class="subtitle">
-How nutritional support may help maintain healthy metabolic function over time.
-</div>
-
-<div class="container">
-
-  <!-- VSL VETURB -->
-  <div class="video-box">
-    <iframe 
-      src="https://player.veturb.com/SEU_ID_AQUI"
-      allow="autoplay; fullscreen">
-    </iframe>
+  <!-- BARRA VERMELHA -->
+  <div class="top-bar">
+    Scientific News
   </div>
 
-  <!-- CTA DELAYED -->
-  <div id="cta-block">
+  <!-- HEADLINE -->
+  <h1>
+    WHY METABOLIC BALANCE MATTERS MORE THAN EXTREME DIETS AFTER 30
+  </h1>
 
-    <!-- BEST VALUE -->
-    <div class="offer best">
-      <h2>BEST VALUE</h2>
-      <img src="12bottles.png" class="product-img">
-      <div class="price">$38 / bottle</div>
-      <a href="SEU_CHECKOUT" class="cta-button">EXTENDED PROTOCOL</a>
+  <h2>
+    How nutritional support may help maintain healthy metabolic function over time.
+  </h2>
+
+  <!-- VÍDEO VSL -->
+  <div class="video-wrapper">
+    <!-- COLE AQUI O EMBED DA VETURB -->
+    <!-- EXEMPLO:
+    <iframe src="https://player.veturb.com/SEU_VIDEO"
+      width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+    -->
+    <p><strong>[ VIDEO DA VSL AQUI ]</strong></p>
+  </div>
+
+  <!-- BLOCO DE CTA (APARECE APÓS 3 MINUTOS) -->
+  <div class="cta-section" id="cta">
+
+    <h2>Choose Your Package</h2>
+
+    <div class="offer">
+      <h3>BEST VALUE – 12 BOTTLES</h3>
+      <p class="price">$38 <small>/ bottle</small></p>
+      <a href="LINK_DO_CHECKOUT_AQUI" class="btn">EXTENDED PROTOCOL</a>
     </div>
 
-    <!-- MOST POPULAR -->
     <div class="offer">
-      <h2>Most Popular</h2>
-      <img src="6bottles.png" class="product-img">
-      <div class="price">$48 / bottle</div>
-      <a href="SEU_CHECKOUT" class="cta-button">COMPLETE 180-DAY</a>
+      <h3>MOST POPULAR – 6 BOTTLES</h3>
+      <p class="price">$48 <small>/ bottle</small></p>
+      <a href="LINK_DO_CHECKOUT_AQUI" class="btn">COMPLETE 180-DAY</a>
     </div>
 
-    <!-- BASIC -->
     <div class="offer">
-      <h2>Basic</h2>
-      <img src="3bottles.png" class="product-img">
-      <div class="price">$78 / bottle</div>
-      <a href="SEU_CHECKOUT" class="cta-button">MINIMUM 90-DAY</a>
+      <h3>BASIC – 3 BOTTLES</h3>
+      <p class="price">$78 <small>/ bottle</small></p>
+      <a href="LINK_DO_CHECKOUT_AQUI" class="btn">MINIMUM 90-DAY</a>
+    </div>
+
+    <div class="guarantee">
+      <strong>100% Satisfaction Guaranteed</strong><br>
+      90-day money-back guarantee.
     </div>
 
   </div>
 
-</div>
+  <footer>
+    © 2026 All rights reserved.<br>
+    <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+  </footer>
 
-<footer>
-Copyright © 2026 – All Rights Reserved<br>
-Terms of Use | Privacy Policy
-</footer>
-
-<!-- DELAY SCRIPT: 3 MINUTOS -->
-<script>
-setTimeout(function() {
-  document.getElementById("cta-block").style.display = "block";
-}, 180000);
-</script>
+  <!-- SCRIPT DO DELAY DO CTA -->
+  <script>
+    setTimeout(function () {
+      document.getElementById("cta").style.display = "block";
+    }, 0000); // 3 minutos = 180000 | para testar rápido use 5000
+  </script>
 
 </body>
 </html>
+
