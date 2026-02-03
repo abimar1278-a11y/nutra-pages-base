@@ -5,7 +5,8 @@
 <title>Official Site</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- PIXEL (COLE O ID QUANDO CRIAR) -->
+<!-- ================= META / PIXEL ================= -->
+<!-- COLE SEU PIXEL AQUI QUANDO CRIAR -->
 <!--
 <script>
 !function(f,b,e,v,n,t,s)
@@ -26,10 +27,11 @@ body{
 margin:0;
 font-family:Arial,Helvetica,sans-serif;
 background:#fff;
+color:#000;
 text-align:center;
 }
 
-/* TOP BAR */
+/* Top bar */
 .top-bar{
 background:#e60000;
 color:#fff;
@@ -38,7 +40,7 @@ font-size:14px;
 font-weight:bold;
 }
 
-/* HEADLINE */
+/* Headline */
 h1{
 color:#0033cc;
 font-size:28px;
@@ -46,10 +48,11 @@ margin:30px 15px 10px;
 }
 h2{
 font-size:18px;
-margin-bottom:30px;
+font-weight:normal;
+margin:0 15px 30px;
 }
 
-/* VIDEO */
+/* Video */
 .video-box{
 max-width:720px;
 margin:0 auto;
@@ -58,14 +61,15 @@ border:3px solid #0033cc;
 border-radius:12px;
 }
 
-/* CTA */
+/* CTA section */
 #cta{
 display:none;
 max-width:1100px;
 margin:40px auto;
+padding:10px;
 }
 
-/* OFFERS */
+/* Offers layout */
 .offers{
 display:flex;
 flex-wrap:wrap;
@@ -73,25 +77,27 @@ justify-content:center;
 gap:20px;
 }
 
-/* CARD BASE */
+/* Base card */
 .card{
 width:320px;
 border:3px solid #0033cc;
 border-radius:18px;
 padding:15px;
 box-sizing:border-box;
+background:#fff;
 }
 
-/* BADGES */
+/* Badges */
 .badge{
 font-weight:bold;
 padding:10px;
+border-radius:12px 12px 0 0;
 font-size:18px;
 }
 
-/* TEXT */
+/* Titles */
 .card h3{
-margin:10px 0 5px;
+margin:15px 0 5px;
 font-size:20px;
 color:#0033cc;
 }
@@ -100,75 +106,79 @@ font-size:14px;
 margin-bottom:10px;
 }
 
-/* PRICE */
+/* Price */
 .price{
 font-size:34px;
 font-weight:bold;
+margin:10px 0;
 }
 .price small{
 font-size:16px;
 }
 
-/* TOTAL */
-.total{
-margin-top:10px;
-font-size:16px;
-}
-.total del{
-color:#999;
-font-size:18px;
-}
-.total strong{
-font-size:22px;
-}
-
-/* IMAGE */
+/* Image */
 .card img{
 max-width:100%;
 margin:10px 0;
 }
 
-/* LIST */
+/* List */
 ul{
 list-style:none;
 padding:0;
-font-size:14px;
+margin:10px 0;
 text-align:left;
+font-size:14px;
 }
 ul li{
 margin:6px 0;
 }
 
-/* BUTTON */
+/* Button */
 .btn{
 display:block;
 background:#7acb00;
 color:#000;
+text-decoration:none;
 font-weight:bold;
 padding:16px;
 border-radius:12px;
 margin-top:15px;
-text-decoration:none;
 }
 
-/* BEST VALUE (12) */
+/* ===== SPECIAL STYLES ===== */
+
+/* 12 Bottles */
 .card.best{
 background:#2f5597;
 color:#fff;
-border:none;
+border-color:#2f5597;
+}
+.card.best h3,
+.card.best .sub,
+.card.best .price{
+color:#fff;
 }
 .badge.best{
 background:#0f2f5f;
 color:#ffd700;
 }
-.card.best h3,
-.card.best .sub,
-.card.best .price,
-.card.best .total{
-color:#fff;
+
+/* 6 Bottles */
+.badge.popular{
+background:#fff;
+color:#0033cc;
+border-bottom:2px solid #0033cc;
 }
 
-/* FOOTER */
+/* 3 Bottles */
+.badge.basic{
+background:#fff;
+color:#0033cc;
+border-bottom:2px solid #0033cc;
+}
+
+/* Footer */
 footer{
 margin-top:60px;
 padding:20px;
@@ -187,88 +197,85 @@ background:#f2f2f2;
 <h2>How nutritional support may help maintain healthy metabolic function over time.</h2>
 
 <div class="video-box">
-<!-- EMBED DA VETURB AQUI -->
+<!-- COLE O EMBED DA VETURB AQUI -->
 <p><strong>[ VIDEO DA VSL AQUI ]</strong></p>
 </div>
 
+<!-- ================= CTA ================= -->
 <div id="cta">
+
 <h2>Choose Your Package</h2>
 
 <div class="offers">
 
-<!-- 12 BOTTLES -->
+<!-- ===== 12 BOTTLES ===== -->
 <div class="card best">
 <div class="badge best">BEST VALUE!</div>
+
 <h3>12 BOTTLES</h3>
 <div class="sub">EXTENDED PROTOCOL</div>
-<img src="IMAGEM_12.png">
+
+<img src="IMAGEM_12.png" alt="12 Bottles">
+
 <div class="price">$38 <small>/ bottle</small></div>
 
 <ul>
 <li>✔ You save $468</li>
 <li>✔ Biggest discount</li>
-<li>✔ 90-day guarantee</li>
+<li>✔ 90 days guarantee</li>
 <li>✔ Free shipping</li>
 </ul>
 
-<div class="total">
-Total: <del>$598</del><br>
-<strong>$464</strong>
+<a href="LINK_CHECKOUT_12" class="btn">EXTENDED PROTOCOL</a>
 </div>
 
-<a href="LINK_12" class="btn">EXTENDED PROTOCOL</a>
-</div>
-
-<!-- 6 BOTTLES -->
+<!-- ===== 6 BOTTLES ===== -->
 <div class="card">
-<div class="badge">Most Popular</div>
+<div class="badge popular">Most Popular</div>
+
 <h3>6 BOTTLES</h3>
 <div class="sub">COMPLETE 180-DAY</div>
-<img src="IMAGEM_6.png">
+
+<img src="IMAGEM_6.png" alt="6 Bottles">
+
 <div class="price">$48 <small>/ bottle</small></div>
 
 <ul>
 <li>✔ Save $174</li>
-<li>✔ 90-day guarantee</li>
+<li>✔ 90 days guarantee</li>
 <li>✔ Free shipping</li>
 </ul>
 
-<div class="total">
-Total: <del>$299</del><br>
-<strong>$294</strong>
+<a href="LINK_CHECKOUT_6" class="btn">COMPLETE 180-DAY</a>
 </div>
 
-<a href="LINK_6" class="btn">COMPLETE 180-DAY</a>
-</div>
-
-<!-- 3 BOTTLES -->
+<!-- ===== 3 BOTTLES ===== -->
 <div class="card">
-<div class="badge">Basic</div>
+<div class="badge basic">Basic</div>
+
 <h3>3 BOTTLES</h3>
 <div class="sub">MINIMUM 90-DAY</div>
-<img src="IMAGEM_3.png">
+
+<img src="IMAGEM_3.png" alt="3 Bottles">
+
 <div class="price">$78 <small>/ bottle</small></div>
 
 <ul>
 <li>✔ Natural ingredients</li>
-<li>✔ 90-day guarantee</li>
+<li>✔ 90 days guarantee</li>
 <li>✔ Free shipping</li>
 </ul>
 
-<div class="total">
-Total: <del>$236</del><br>
-<strong>$207</strong>
-</div>
-
-<a href="LINK_3" class="btn">MINIMUM 90-DAY</a>
+<a href="LINK_CHECKOUT_3" class="btn">MINIMUM 90-DAY</a>
 </div>
 
 </div>
 
-<p style="margin-top:30px;">
+<p style="margin-top:30px;font-size:16px;">
 <strong>100% Satisfaction Guaranteed</strong><br>
 90-day money-back guarantee.
 </p>
+
 </div>
 
 <footer>
@@ -276,10 +283,11 @@ Total: <del>$236</del><br>
 <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
 </footer>
 
+<!-- ===== DELAY DO CTA ===== -->
 <script>
 setTimeout(function(){
 document.getElementById("cta").style.display="block";
-},000000); // 3 minutos (use 5000 para teste)
+},000000); // 3 minutos (use 5000 para teste rápido)
 </script>
 
 </body>
