@@ -1,12 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nutra Test Page</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Scientific News</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- PIXEL (adicione depois se quiser) -->
+<!--
+<script>
+fbq('init', 'SEU_PIXEL_AQUI');
+fbq('track', 'PageView');
+</script>
+-->
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #111;
+  text-align: center;
+}
+
+/* TOP BAR */
+.top-bar {
+  background: #e41e26;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* HEADLINE */
+h1 {
+  color: #0a33ff;
+  font-size: 28px;
+  padding: 20px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #333;
+  padding: 0 20px 20px;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 720px;
+  margin: auto;
+  padding: 10px;
+}
+
+/* VIDEO */
+.video-box {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 3px solid #2b6cff;
+}
+
+.video-box iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* CTA BLOCK */
+#cta-block {
+  display: none;
+  margin-top: 30px;
+}
+
+/* OFFER BOX */
+.offer {
+  border: 3px solid #2b6cff;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.offer.best {
+  background: #1f3d66;
+  color: #fff;
+}
+
+.offer h2 {
+  margin: 10px 0;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.cta-button {
+  display: block;
+  background: #7bd300;
+  color: #111;
+  font-weight: bold;
+  padding: 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+/* PRODUCT IMAGE */
+.product-img {
+  max-width: 260px;
+  margin: 20px auto;
+}
+
+/* FOOTER */
+footer {
+  font-size: 12px;
+  color: #666;
+  margin: 40px 0 20px;
+}
+</style>
 </head>
-<body style="font-family: Arial; text-align:center; padding:40px;">
-  <h1>🚀 Página Nutra no ar</h1>
-  <p>Infra profissional funcionando.</p>
+
+<body>
+
+<div class="top-bar">Scientific News</div>
+
+<h1>Why Metabolic Balance Matters More Than Extreme Diets After 30</h1>
+<div class="subtitle">
+How nutritional support may help maintain healthy metabolic function over time.
+</div>
+
+<div class="container">
+
+  <!-- VSL VETURB -->
+  <div class="video-box">
+    <iframe 
+      src="https://player.veturb.com/SEU_ID_AQUI"
+      allow="autoplay; fullscreen">
+    </iframe>
+  </div>
+
+  <!-- CTA DELAYED -->
+  <div id="cta-block">
+
+    <!-- BEST VALUE -->
+    <div class="offer best">
+      <h2>BEST VALUE</h2>
+      <img src="12bottles.png" class="product-img">
+      <div class="price">$38 / bottle</div>
+      <a href="SEU_CHECKOUT" class="cta-button">EXTENDED PROTOCOL</a>
+    </div>
+
+    <!-- MOST POPULAR -->
+    <div class="offer">
+      <h2>Most Popular</h2>
+      <img src="6bottles.png" class="product-img">
+      <div class="price">$48 / bottle</div>
+      <a href="SEU_CHECKOUT" class="cta-button">COMPLETE 180-DAY</a>
+    </div>
+
+    <!-- BASIC -->
+    <div class="offer">
+      <h2>Basic</h2>
+      <img src="3bottles.png" class="product-img">
+      <div class="price">$78 / bottle</div>
+      <a href="SEU_CHECKOUT" class="cta-button">MINIMUM 90-DAY</a>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+Copyright © 2026 – All Rights Reserved<br>
+Terms of Use | Privacy Policy
+</footer>
+
+<!-- DELAY SCRIPT: 3 MINUTOS -->
+<script>
+setTimeout(function() {
+  document.getElementById("cta-block").style.display = "block";
+}, 180000);
+</script>
+
 </body>
 </html>
