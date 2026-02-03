@@ -1,259 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Official Site</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Official Site</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ================= PIXEL FACEBOOK / META ================= -->
-  <!--
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'SEU_PIXEL_ID_AQUI');
-    fbq('track', 'PageView');
-  </script>
-  -->
-  <!-- =========================================================== -->
+<!-- PIXEL (COLE O ID QUANDO CRIAR) -->
+<!--
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','SEU_PIXEL_ID');
+fbq('track','PageView');
+</script>
+-->
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #ffffff;
-      color: #000;
-      text-align: center;
-    }
+<style>
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#fff;
+text-align:center;
+}
 
-    .top-bar {
-      background: #e60000;
-      color: #fff;
-      padding: 10px;
-      font-weight: bold;
-      font-size: 14px;
-    }
+/* TOP BAR */
+.top-bar{
+background:#e60000;
+color:#fff;
+padding:10px;
+font-size:14px;
+font-weight:bold;
+}
 
-    h1 {
-      color: #0033cc;
-      font-size: 28px;
-      margin: 30px 20px 10px;
-    }
+/* HEADLINE */
+h1{
+color:#0033cc;
+font-size:28px;
+margin:30px 15px 10px;
+}
+h2{
+font-size:18px;
+margin-bottom:30px;
+}
 
-    h2 {
-      font-size: 18px;
-      font-weight: normal;
-      margin: 0 20px 30px;
-    }
+/* VIDEO */
+.video-box{
+max-width:720px;
+margin:0 auto;
+padding:15px;
+border:3px solid #0033cc;
+border-radius:12px;
+}
 
-    .video-wrapper {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 15px;
-      border: 3px solid #0033cc;
-      border-radius: 14px;
-    }
+/* CTA */
+#cta{
+display:none;
+max-width:1100px;
+margin:40px auto;
+}
 
-    .cta-section {
-      display: none;
-      margin: 50px auto;
-      max-width: 1100px;
-      padding: 20px;
-    }
+/* OFFERS */
+.offers{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
 
-    .offers {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+/* CARD BASE */
+.card{
+width:320px;
+border:3px solid #0033cc;
+border-radius:18px;
+padding:15px;
+box-sizing:border-box;
+}
 
-    .offer-card {
-      border: 2px solid #0033cc;
-      border-radius: 18px;
-      padding: 20px;
-      width: 300px;
-      position: relative;
-      background: #ffffff;
-    }
+/* BADGES */
+.badge{
+font-weight:bold;
+padding:10px;
+font-size:18px;
+}
 
-    /* ===== CARD BEST VALUE (12 BOTTLES) ===== */
-    .best-value {
-      background: #1f3b73;
-      color: #ffffff;
-      border: 3px solid #1f3b73;
-    }
+/* TEXT */
+.card h3{
+margin:10px 0 5px;
+font-size:20px;
+color:#0033cc;
+}
+.sub{
+font-size:14px;
+margin-bottom:10px;
+}
 
-    .best-value .offer-title,
-    .best-value .offer-sub,
-    .best-value .offer-price,
-    .best-value li {
-      color: #ffffff;
-    }
+/* PRICE */
+.price{
+font-size:34px;
+font-weight:bold;
+}
+.price small{
+font-size:16px;
+}
 
-    .offer-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: bold;
-      border-radius: 20px;
-    }
+/* TOTAL */
+.total{
+margin-top:10px;
+font-size:16px;
+}
+.total del{
+color:#999;
+font-size:18px;
+}
+.total strong{
+font-size:22px;
+}
 
-    .badge-best {
-      background: #ffcc00;
-      color: #000;
-    }
+/* IMAGE */
+.card img{
+max-width:100%;
+margin:10px 0;
+}
 
-    .badge-normal {
-      background: #0033cc;
-      color: #fff;
-    }
+/* LIST */
+ul{
+list-style:none;
+padding:0;
+font-size:14px;
+text-align:left;
+}
+ul li{
+margin:6px 0;
+}
 
-    .offer-title {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 25px;
-    }
+/* BUTTON */
+.btn{
+display:block;
+background:#7acb00;
+color:#000;
+font-weight:bold;
+padding:16px;
+border-radius:12px;
+margin-top:15px;
+text-decoration:none;
+}
 
-    .offer-sub {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
+/* BEST VALUE (12) */
+.card.best{
+background:#2f5597;
+color:#fff;
+border:none;
+}
+.badge.best{
+background:#0f2f5f;
+color:#ffd700;
+}
+.card.best h3,
+.card.best .sub,
+.card.best .price,
+.card.best .total{
+color:#fff;
+}
 
-    .offer-img {
-      max-width: 180px;
-      margin: 15px auto;
-    }
-
-    .offer-price {
-      font-size: 30px;
-      font-weight: bold;
-      margin: 10px 0;
-    }
-
-    .offer-list {
-      list-style: none;
-      padding: 0;
-      font-size: 14px;
-      margin: 15px 0;
-      text-align: left;
-    }
-
-    .offer-list li {
-      margin-bottom: 6px;
-    }
-
-    .offer-btn {
-      display: inline-block;
-      background: #7acb00;
-      color: #000;
-      padding: 16px 26px;
-      margin-top: 15px;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 12px;
-    }
-
-    .guarantee {
-      margin: 50px 20px;
-      font-size: 16px;
-    }
-
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      font-size: 14px;
-      color: #666;
-      background: #f2f2f2;
-    }
-
-    @media (max-width: 768px) {
-      .offer-card {
-        width: 100%;
-        max-width: 340px;
-      }
-    }
-  </style>
+/* FOOTER */
+footer{
+margin-top:60px;
+padding:20px;
+font-size:14px;
+color:#666;
+background:#f2f2f2;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="top-bar">Scientific News</div>
+<div class="top-bar">Scientific News</div>
 
-  <h1>WHY METABOLIC BALANCE MATTERS MORE THAN EXTREME DIETS AFTER 30</h1>
-  <h2>How nutritional support may help maintain healthy metabolic function over time.</h2>
+<h1>WHY METABOLIC BALANCE MATTERS MORE THAN EXTREME DIETS AFTER 30</h1>
+<h2>How nutritional support may help maintain healthy metabolic function over time.</h2>
 
-  <div class="video-wrapper">
-    <strong>[ VIDEO DA VSL AQUI ]</strong>
-  </div>
+<div class="video-box">
+<!-- EMBED DA VETURB AQUI -->
+<p><strong>[ VIDEO DA VSL AQUI ]</strong></p>
+</div>
 
-  <div class="cta-section" id="cta">
-    <h2>Choose Your Package</h2>
+<div id="cta">
+<h2>Choose Your Package</h2>
 
-    <div class="offers">
+<div class="offers">
 
-      <!-- 12 BOTTLES -->
-      <div class="offer-card best-value">
-        <div class="offer-badge badge-best">BEST VALUE!</div>
-        <div class="offer-title">12 BOTTLES</div>
-        <div class="offer-sub">EXTENDED PROTOCOL</div>
-        <img src="IMAGEM_12_BOTTLES.png" class="offer-img">
-        <div class="offer-price">$38 <small>/ bottle</small></div>
-        <ul class="offer-list">
-          <li>✔ Biggest discount</li>
-          <li>✔ 90-day guarantee</li>
-          <li>✔ Free shipping</li>
-        </ul>
-        <a href="LINK_CHECKOUT_12" class="offer-btn">EXTENDED PROTOCOL</a>
-      </div>
+<!-- 12 BOTTLES -->
+<div class="card best">
+<div class="badge best">BEST VALUE!</div>
+<h3>12 BOTTLES</h3>
+<div class="sub">EXTENDED PROTOCOL</div>
+<img src="IMAGEM_12.png">
+<div class="price">$38 <small>/ bottle</small></div>
 
-      <!-- 6 BOTTLES -->
-      <div class="offer-card">
-        <div class="offer-badge badge-normal">MOST POPULAR</div>
-        <div class="offer-title">6 BOTTLES</div>
-        <div class="offer-sub">COMPLETE 180-DAY</div>
-        <img src="IMAGEM_6_BOTTLES.png" class="offer-img">
-        <div class="offer-price">$48 <small>/ bottle</small></div>
-        <a href="LINK_CHECKOUT_6" class="offer-btn">COMPLETE 180-DAY</a>
-      </div>
+<ul>
+<li>✔ You save $468</li>
+<li>✔ Biggest discount</li>
+<li>✔ 90-day guarantee</li>
+<li>✔ Free shipping</li>
+</ul>
 
-      <!-- 3 BOTTLES -->
-      <div class="offer-card">
-        <div class="offer-badge badge-normal">BASIC</div>
-        <div class="offer-title">3 BOTTLES</div>
-        <div class="offer-sub">MINIMUM 90-DAY</div>
-        <img src="IMAGEM_3_BOTTLES.png" class="offer-img">
-        <div class="offer-price">$78 <small>/ bottle</small></div>
-        <a href="LINK_CHECKOUT_3" class="offer-btn">MINIMUM 90-DAY</a>
-      </div>
+<div class="total">
+Total: <del>$598</del><br>
+<strong>$464</strong>
+</div>
 
-    </div>
+<a href="LINK_12" class="btn">EXTENDED PROTOCOL</a>
+</div>
 
-    <div class="guarantee">
-      <strong>100% Satisfaction Guaranteed</strong><br>
-      90-day money-back guarantee.
-    </div>
-  </div>
+<!-- 6 BOTTLES -->
+<div class="card">
+<div class="badge">Most Popular</div>
+<h3>6 BOTTLES</h3>
+<div class="sub">COMPLETE 180-DAY</div>
+<img src="IMAGEM_6.png">
+<div class="price">$48 <small>/ bottle</small></div>
 
-  <footer>
-    © 2026 All rights reserved.<br>
-    <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
-  </footer>
+<ul>
+<li>✔ Save $174</li>
+<li>✔ 90-day guarantee</li>
+<li>✔ Free shipping</li>
+</ul>
 
-  <script>
-    setTimeout(function () {
-      document.getElementById("cta").style.display = "block";
-    }, 000000); // 3 minutos (para teste use 5000)
-  </script>
+<div class="total">
+Total: <del>$299</del><br>
+<strong>$294</strong>
+</div>
+
+<a href="LINK_6" class="btn">COMPLETE 180-DAY</a>
+</div>
+
+<!-- 3 BOTTLES -->
+<div class="card">
+<div class="badge">Basic</div>
+<h3>3 BOTTLES</h3>
+<div class="sub">MINIMUM 90-DAY</div>
+<img src="IMAGEM_3.png">
+<div class="price">$78 <small>/ bottle</small></div>
+
+<ul>
+<li>✔ Natural ingredients</li>
+<li>✔ 90-day guarantee</li>
+<li>✔ Free shipping</li>
+</ul>
+
+<div class="total">
+Total: <del>$236</del><br>
+<strong>$207</strong>
+</div>
+
+<a href="LINK_3" class="btn">MINIMUM 90-DAY</a>
+</div>
+
+</div>
+
+<p style="margin-top:30px;">
+<strong>100% Satisfaction Guaranteed</strong><br>
+90-day money-back guarantee.
+</p>
+</div>
+
+<footer>
+© 2026 All rights reserved<br>
+<a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+</footer>
+
+<script>
+setTimeout(function(){
+document.getElementById("cta").style.display="block";
+},000000); // 3 minutos (use 5000 para teste)
+</script>
 
 </body>
 </html>
