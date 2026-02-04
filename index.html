@@ -5,31 +5,14 @@
 <title>Official Site</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- PIXEL (COLE O ID QUANDO CRIAR) -->
-<!--
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','SEU_PIXEL_ID');
-fbq('track','PageView');
-</script>
--->
-
 <style>
 body{
 margin:0;
 font-family:Arial,Helvetica,sans-serif;
-background:#fff;
+background:#ffffff;
 text-align:center;
 }
 
-/* TOP BAR */
 .top-bar{
 background:#e60000;
 color:#fff;
@@ -38,7 +21,6 @@ font-size:14px;
 font-weight:bold;
 }
 
-/* HEADLINE */
 h1{
 color:#0033cc;
 font-size:28px;
@@ -47,9 +29,9 @@ margin:30px 15px 10px;
 h2{
 font-size:18px;
 margin-bottom:30px;
+font-weight:normal;
 }
 
-/* VIDEO */
 .video-box{
 max-width:720px;
 margin:0 auto;
@@ -62,104 +44,106 @@ border-radius:12px;
 #cta{
 display:none;
 max-width:1100px;
-margin:40px auto;
+margin:50px auto;
 }
 
-/* OFFERS */
+/* GRID */
 .offers{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:20px;
+gap:25px;
 }
 
 /* CARD BASE */
 .card{
 width:320px;
 border:3px solid #0033cc;
-border-radius:18px;
-padding:15px;
+border-radius:20px;
+padding:20px;
 box-sizing:border-box;
 }
 
-/* BADGES */
-.badge{
+/* HEADER DOS CARDS */
+.card-header{
 font-weight:bold;
-padding:10px;
-font-size:18px;
+font-size:20px;
+margin-bottom:6px;
 }
 
-/* TEXT */
+/* LINHA AZUL ABAIXO DO HEADER */
+.header-line{
+width:60%;
+height:3px;
+background:#0033cc;
+margin:6px auto 12px;
+}
+
+/* TITULOS */
 .card h3{
-margin:10px 0 5px;
-font-size:20px;
 color:#0033cc;
+margin:5px 0;
 }
 .sub{
 font-size:14px;
 margin-bottom:10px;
 }
 
-/* PRICE */
+/* IMAGEM */
+.card img{
+max-width:100%;
+margin:10px 0;
+}
+
+/* PREÇO */
 .price{
-font-size:34px;
+font-size:36px;
 font-weight:bold;
 }
 .price small{
 font-size:16px;
 }
 
+/* LISTA */
+ul{
+list-style:none;
+padding:0;
+text-align:left;
+font-size:14px;
+}
+ul li{
+margin:6px 0;
+}
+
 /* TOTAL */
 .total{
 margin-top:10px;
-font-size:16px;
 }
 .total del{
-color:#999;
+color:#d00000; /* VERMELHO NO PREÇO RISCADO */
 font-size:18px;
 }
 .total strong{
 font-size:22px;
 }
 
-/* IMAGE */
-.card img{
-max-width:100%;
-margin:10px 0;
-}
-
-/* LIST */
-ul{
-list-style:none;
-padding:0;
-font-size:14px;
-text-align:left;
-}
-ul li{
-margin:6px 0;
-}
-
-/* BUTTON */
+/* BOTÃO */
 .btn{
 display:block;
 background:#7acb00;
 color:#000;
 font-weight:bold;
 padding:16px;
-border-radius:12px;
+border-radius:14px;
 margin-top:15px;
 text-decoration:none;
 }
 
-/* BEST VALUE (12) */
+/* ===== BEST VALUE ===== */
 .card.best{
 background:#2f5597;
 color:#fff;
 border:none;
-}
-.badge.best{
-background:#0f2f5f;
-color:#ffd700;
 }
 .card.best h3,
 .card.best .sub,
@@ -167,8 +151,16 @@ color:#ffd700;
 .card.best .total{
 color:#fff;
 }
+.best .card-header{
+background:#0f2f5f;
+color:#ffd700;
+padding:10px;
+border-radius:10px;
+}
+.best .header-line{
+display:none;
+}
 
-/* FOOTER */
 footer{
 margin-top:60px;
 padding:20px;
@@ -187,7 +179,6 @@ background:#f2f2f2;
 <h2>How nutritional support may help maintain healthy metabolic function over time.</h2>
 
 <div class="video-box">
-<!-- EMBED DA VETURB AQUI -->
 <p><strong>[ VIDEO DA VSL AQUI ]</strong></p>
 </div>
 
@@ -198,10 +189,12 @@ background:#f2f2f2;
 
 <!-- 12 BOTTLES -->
 <div class="card best">
-<div class="badge best">BEST VALUE!</div>
+<div class="card-header">BEST VALUE!</div>
 <h3>12 BOTTLES</h3>
 <div class="sub">EXTENDED PROTOCOL</div>
+
 <img src="IMAGEM_12.png">
+
 <div class="price">$38 <small>/ bottle</small></div>
 
 <ul>
@@ -221,10 +214,14 @@ Total: <del>$598</del><br>
 
 <!-- 6 BOTTLES -->
 <div class="card">
-<div class="badge">Most Popular</div>
+<div class="card-header" style="color:#0033cc;">Most Popular</div>
+<div class="header-line"></div>
+
 <h3>6 BOTTLES</h3>
 <div class="sub">COMPLETE 180-DAY</div>
+
 <img src="IMAGEM_6.png">
+
 <div class="price">$48 <small>/ bottle</small></div>
 
 <ul>
@@ -243,10 +240,14 @@ Total: <del>$299</del><br>
 
 <!-- 3 BOTTLES -->
 <div class="card">
-<div class="badge">Basic</div>
+<div class="card-header" style="color:#0033cc;">Basic</div>
+<div class="header-line"></div>
+
 <h3>3 BOTTLES</h3>
 <div class="sub">MINIMUM 90-DAY</div>
+
 <img src="IMAGEM_3.png">
+
 <div class="price">$78 <small>/ bottle</small></div>
 
 <ul>
@@ -279,7 +280,7 @@ Total: <del>$236</del><br>
 <script>
 setTimeout(function(){
 document.getElementById("cta").style.display="block";
-},000000); // 3 minutos (use 5000 para teste)
+},000000);
 </script>
 
 </body>
