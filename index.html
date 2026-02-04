@@ -129,14 +129,35 @@ font-size:22px;
 
 /* BOTÃO */
 .btn{
-display:block;
-background:#7acb00;
-color:#000;
-font-weight:bold;
-padding:16px;
-border-radius:14px;
-margin-top:15px;
-text-decoration:none;
+  display:block;
+  background:#7acb00;
+  color:#000;
+  font-weight:bold;
+  padding:16px;
+  border-radius:14px;
+  margin-top:15px;
+  text-decoration:none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: pulse 2s infinite;
+}
+
+/* HOVER (desktop) */
+.btn:hover{
+  transform: scale(1.04);
+  box-shadow: 0 0 0 6px rgba(122,203,0,0.35);
+}
+
+/* PULSE */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(122,203,0,0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(122,203,0,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(122,203,0,0);
+  }
 }
 
 /* ===== BEST VALUE ===== */
