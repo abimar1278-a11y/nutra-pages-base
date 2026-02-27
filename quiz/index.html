@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LustyBooks - Quiz</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#F3F4F6;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.quiz-container{
+  width:100%;
+  max-width:420px;
+  background:#ffffff;
+  padding:30px;
+  box-sizing:border-box;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  position:relative;
+}
+
+.progress-bar{
+  height:8px;
+  background:#E5E7EB;
+  border-radius:8px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+
+.progress{
+  height:100%;
+  width:0%;
+  background:#22C55E;
+  transition:width 0.4s ease;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.options button{
+  width:100%;
+  padding:14px;
+  margin-bottom:12px;
+  border:none;
+  border-radius:10px;
+  background:#FFF1F2;
+  cursor:pointer;
+  font-size:14px;
+  transition:all 0.2s ease;
+}
+
+.options button:hover{
+  background:#FECACA;
+}
+
+.loading{
+  text-align:center;
+  display:none;
+}
+
+.spinner{
+  width:40px;
+  height:40px;
+  border:5px solid #E5E7EB;
+  border-top:5px solid #10B981;
+  border-radius:50%;
+  margin:20px auto;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="quiz-container">
+
+<div class="progress-bar">
+  <div class="progress" id="progress"></div>
+</div>
+
+<div id="question-container"></div>
+
+<div class="loading" id="loading">
+  <h2>Analisando suas respostas...</h2>
+  <div class="spinner"></div>
+</div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    question: "Quantos livros você lê por mês?",
+    answers: ["1 Livro", "De 5 a 10 Livros", "De 15 a 30 Livros", "Mais de 30 Livros"]
+  },
+  {
+    question: "Você já desistiu de um livro por causa de capítulos pagos?",
+    answers: ["Sim", "Algumas vezes", "Já fiquei no prejuízo"]
+  },
+  {
+    question: "Você prefere ler tudo de uma vez ou esperar liberar capítulos?",
+    answers: ["Tudo de uma vez", "Odeio esperar", "Depende do livro"]
+  }
+];
+
+let currentQuestion = 0;
+
+function showQuestion(){
+  const container = document.getElementById("question-container");
+  container.innerHTML = "";
+
+  if(currentQuestion < questions.length){
+    const q = questions[currentQuestion];
+
+    const title = document.createElement("h2");
+    title.innerText = q.question;
+    container.appendChild(title);
+
+    const optionsDiv = document.createElement("div");
+    optionsDiv.classList.add("options");
+
+    q.answers.forEach(answer=>{
+      const btn = document.createElement("button");
+      btn.innerText = answer;
+      btn.onclick = nextQuestion;
+      optionsDiv.appendChild(btn);
+    });
+
+    container.appendChild(optionsDiv);
+
+    updateProgress();
+  } else {
+    showLoading();
+  }
+}
+
+function nextQuestion(){
+  currentQuestion++;
+  showQuestion();
+}
+
+function updateProgress(){
+  const progress = document.getElementById("progress");
+  const percentage = ((currentQuestion)/questions.length)*100;
+  progress.style.width = percentage + "%";
+}
+
+function showLoading(){
+  document.getElementById("question-container").style.display="none";
+  document.getElementById("loading").style.display="block";
+
+  setTimeout(()=>{
+    window.location.href = "/oferta";
+  },8000);
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
