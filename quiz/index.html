@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LustyBooks - Quiz</title>
+<title>LustyBooks</title>
 
 <style>
 body{
@@ -13,18 +13,17 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
+  min-height:100vh;
 }
 
-.quiz-container{
+.container{
   width:100%;
   max-width:420px;
-  background:#ffffff;
+  background:#fff;
   padding:30px;
   box-sizing:border-box;
   border-radius:16px;
   box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  position:relative;
 }
 
 .progress-bar{
@@ -81,89 +80,131 @@ h2{
 @keyframes spin{
   to{ transform:rotate(360deg); }
 }
+
+.final-page{
+  display:none;
+  text-align:center;
+}
+
+.btn{
+  display:block;
+  width:100%;
+  padding:16px;
+  margin-top:20px;
+  background:#7acb00;
+  color:#000;
+  font-weight:bold;
+  border-radius:12px;
+  text-decoration:none;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(122,203,0,0.6);}
+  70% { box-shadow: 0 0 0 12px rgba(122,203,0,0);}
+  100% { box-shadow: 0 0 0 0 rgba(122,203,0,0);}
+}
 </style>
 </head>
 <body>
 
-<div class="quiz-container">
+<div class="container">
 
 <div class="progress-bar">
   <div class="progress" id="progress"></div>
 </div>
 
-<div id="question-container"></div>
+<div id="quiz"></div>
 
 <div class="loading" id="loading">
-  <h2>Analisando suas respostas...</h2>
+  <h2>Selecionando histórias perfeitas para você...</h2>
   <div class="spinner"></div>
+</div>
+
+<div class="final-page" id="final">
+
+  <h2>💖 Seu acesso personalizado está pronto!</h2>
+
+  <p>Selecionamos as histórias mais envolventes para o seu perfil.</p>
+
+  <!-- MINI VSL -->
+  <vturb-smartplayer id="vid-68bb134df61d0cac8f68e5d6" style="display:block;margin:0 auto;width:100%;max-width:400px;"></vturb-smartplayer>
+  <script>
+  var s=document.createElement("script");
+  s.src="https://scripts.converteai.net/d531afe4-b51a-4140-ab3c-6ce52202a623/players/68bb134df61d0cac8f68e5d6/v4/player.js";
+  s.async=true;
+  document.head.appendChild(s);
+  </script>
+
+  <p style="margin-top:20px;">
+  Tenha acesso ilimitado a romances intensos, emocionantes e envolventes.
+  </p>
+
+  <a href="https://app.mivvo.io/checkout/5yzlz8y0" class="btn">
+    🔓 Quero acessar agora
+  </a>
+
 </div>
 
 </div>
 
 <script>
 const questions = [
-  {
-    question: "Quantos livros você lê por mês?",
-    answers: ["1 Livro", "De 5 a 10 Livros", "De 15 a 30 Livros", "Mais de 30 Livros"]
-  },
-  {
-    question: "Você já desistiu de um livro por causa de capítulos pagos?",
-    answers: ["Sim", "Algumas vezes", "Já fiquei no prejuízo"]
-  },
-  {
-    question: "Você prefere ler tudo de uma vez ou esperar liberar capítulos?",
-    answers: ["Tudo de uma vez", "Odeio esperar", "Depende do livro"]
-  }
+"Você gosta de histórias de romance?",
+"O que mais te prende em uma história?",
+"Você prefere histórias mais...",
+"Com que frequência você lê romances?",
+"Você já abandonou um livro por causa de capítulos pagos?",
+"Você prefere ler no celular ou tablet?",
+"Você gosta de personagens masculinos...",
+"Quando começa uma história envolvente você...",
+"Você prefere histórias curtas ou longas?",
+"Se pudesse ter acesso ilimitado a romances envolventes..."
 ];
 
-let currentQuestion = 0;
+const answers = [
+["Amo romances","Gosto bastante","Depende da história"],
+["Paixão proibida","Homem dominante","Amor impossível"],
+["Quentes e provocantes","Sensuais","Românticas"],
+["Todos os dias","Algumas vezes por semana","Quando quero relaxar"],
+["Sim","Já fiquei frustrada","Já gastei mais do que devia"],
+["Celular","Tablet","Tanto faz"],
+["Intensos","Poderosos","Sensíveis"],
+["Não consigo parar","Fico ansiosa","Leio até tarde"],
+["Longas","Intensas","Depende"],
+["Leria todos os dias","Nunca mais compraria capítulos","Seria perfeito"]
+];
+
+let current = 0;
 
 function showQuestion(){
-  const container = document.getElementById("question-container");
-  container.innerHTML = "";
-
-  if(currentQuestion < questions.length){
-    const q = questions[currentQuestion];
-
-    const title = document.createElement("h2");
-    title.innerText = q.question;
-    container.appendChild(title);
-
-    const optionsDiv = document.createElement("div");
-    optionsDiv.classList.add("options");
-
-    q.answers.forEach(answer=>{
-      const btn = document.createElement("button");
-      btn.innerText = answer;
-      btn.onclick = nextQuestion;
-      optionsDiv.appendChild(btn);
-    });
-
-    container.appendChild(optionsDiv);
-
+  if(current < questions.length){
+    document.getElementById("quiz").innerHTML =
+      "<h2>"+questions[current]+"</h2><div class='options'>"+
+      answers[current].map(a=>"<button onclick='next()'>"+a+"</button>").join("")+
+      "</div>";
     updateProgress();
   } else {
-    showLoading();
+    startLoading();
   }
 }
 
-function nextQuestion(){
-  currentQuestion++;
+function next(){
+  current++;
   showQuestion();
 }
 
 function updateProgress(){
-  const progress = document.getElementById("progress");
-  const percentage = ((currentQuestion)/questions.length)*100;
-  progress.style.width = percentage + "%";
+  document.getElementById("progress").style.width =
+    ((current)/questions.length)*100+"%";
 }
 
-function showLoading(){
-  document.getElementById("question-container").style.display="none";
+function startLoading(){
+  document.getElementById("quiz").style.display="none";
   document.getElementById("loading").style.display="block";
-
   setTimeout(()=>{
-    window.location.href = "/oferta";
+    document.getElementById("loading").style.display="none";
+    document.getElementById("final").style.display="block";
   },8000);
 }
 
