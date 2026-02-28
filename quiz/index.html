@@ -127,14 +127,8 @@ h2{
 
   <p>Selecionamos as histórias mais envolventes para o seu perfil.</p>
 
-  <!-- MINI VSL -->
-  <vturb-smartplayer id="vid-68bb134df61d0cac8f68e5d6" style="display:block;margin:0 auto;width:100%;max-width:400px;"></vturb-smartplayer>
-  <script>
-  var s=document.createElement("script");
-  s.src="https://scripts.converteai.net/d531afe4-b51a-4140-ab3c-6ce52202a623/players/68bb134df61d0cac8f68e5d6/v4/player.js";
-  s.async=true;
-  document.head.appendChild(s);
-  </script>
+  <!-- VIDEO SERÁ INSERIDO AQUI -->
+  <div id="video-container"></div>
 
   <p style="margin-top:20px;">
   Tenha acesso ilimitado a romances intensos, emocionantes e envolventes.
@@ -202,9 +196,22 @@ function updateProgress(){
 function startLoading(){
   document.getElementById("quiz").style.display="none";
   document.getElementById("loading").style.display="block";
+
   setTimeout(()=>{
     document.getElementById("loading").style.display="none";
     document.getElementById("final").style.display="block";
+
+    // Carregar VSL somente agora
+    document.getElementById("video-container").innerHTML = `
+      <vturb-smartplayer id="vid-68bb134df61d0cac8f68e5d6" 
+      style="display:block;margin:0 auto;width:100%;max-width:400px;"></vturb-smartplayer>
+    `;
+
+    var s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/d531afe4-b51a-4140-ab3c-6ce52202a623/players/68bb134df61d0cac8f68e5d6/v4/player.js";
+    s.async = true;
+    document.head.appendChild(s);
+
   },8000);
 }
 
