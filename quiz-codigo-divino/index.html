@@ -90,29 +90,16 @@ border:none;
 font-size:16px;
 }
 
-.phonebox{
-display:flex;
-justify-content:center;
-gap:6px;
-}
-
-.phonebox input:first-child{
-width:80px;
-text-align:center;
-background:#222;
-color:white;
+.secure{
+font-size:13px;
+margin-top:10px;
+color:#9f9f9f;
 }
 
 .error{
 color:#ff6b6b;
 font-size:14px;
 margin-top:8px;
-}
-
-.secure{
-font-size:13px;
-margin-top:10px;
-color:#9f9f9f;
 }
 
 .result{
@@ -173,6 +160,7 @@ animation:blink 1.4s infinite both;
 
 let step=0
 let answers=[]
+let countryCode="+1"
 
 const questions=[
 
@@ -292,13 +280,7 @@ document.getElementById("app").innerHTML=`
 
 <input id="name" placeholder="Nombre">
 
-<div class="phonebox">
-
-<input id="country" readonly>
-
-<input id="phone" placeholder="DDD + número">
-
-</div>
+<input id="phone" placeholder="+57 3001234567">
 
 <div class="secure">
 🔒 Tu número será usado solo para enviarte tu resultado.
@@ -342,13 +324,13 @@ CR:"+506",
 PA:"+507",
 
 DO:"+1",
-
 ES:"+34"
 
 }
 
-document.getElementById("country").value=
-codes[data.country_code] || "+1"
+countryCode=codes[data.country_code] || "+1"
+
+document.getElementById("phone").placeholder=countryCode+" 3001234567"
 
 })
 
@@ -358,7 +340,6 @@ function sendLead(){
 
 let name=document.getElementById("name").value.trim()
 let phone=document.getElementById("phone").value.trim()
-let country=document.getElementById("country").value
 let error=document.getElementById("error")
 
 error.innerHTML=""
@@ -373,7 +354,7 @@ error.innerHTML="Ingresa un número de WhatsApp válido."
 return
 }
 
-let fullPhone=country+phone
+let fullPhone=phone.startsWith("+") ? phone : countryCode+phone
 
 fetch("SEU_WEBHOOK_AQUI",{
 
@@ -400,9 +381,9 @@ document.getElementById("app").innerHTML=`
 
 <div class="result">Nivel: Buscador de Entendimiento</div>
 
-<p>Lees la Biblia y tienes deseo de comprenderla mejor, pero muchas veces el significado profundo de los textos no es claro.</p>
+<p>Lees la Biblia con fe, pero muchas veces el significado profundo de los textos no es claro.</p>
 
-<p>Por eso muchas personas están utilizando una guía llamada <b>CÓDIGO DIVINO</b>.</p>
+<p>Muchas personas están utilizando una guía llamada <b>CÓDIGO DIVINO</b> para comprender la Biblia desde Génesis hasta Apocalipsis.</p>
 
 <button onclick="goOffer()">VER CÓDIGO DIVINO</button>
 
