@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Test Bíblico</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+width:92%;
+max-width:480px;
+}
+
+.card{
+background:#161616;
+padding:30px;
+border-radius:14px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+text-align:center;
+}
+
+h1{
+font-size:24px;
+margin-bottom:10px;
+}
+
+p{
+color:#cfcfcf;
+}
+
+.progress{
+height:6px;
+background:#333;
+border-radius:10px;
+margin-bottom:25px;
+}
+
+.bar{
+height:6px;
+background:#f2b705;
+width:0%;
+border-radius:10px;
+transition:0.4s;
+}
+
+.option{
+background:#222;
+border-radius:10px;
+padding:14px;
+margin:10px 0;
+cursor:pointer;
+transition:0.2s;
+border:1px solid #333;
+}
+
+.option:hover{
+border:1px solid #f2b705;
+}
+
+button{
+background:#f2b705;
+border:none;
+padding:14px 22px;
+border-radius:8px;
+font-size:16px;
+margin-top:20px;
+cursor:pointer;
+}
+
+input{
+width:90%;
+padding:12px;
+margin:8px;
+border-radius:6px;
+border:none;
+font-size:16px;
+}
+
+.result{
+font-size:22px;
+color:#f2b705;
+margin:15px 0;
+}
+
+.loader{
+margin-top:20px;
+}
+
+.dot{
+height:10px;
+width:10px;
+background:#f2b705;
+border-radius:50%;
+display:inline-block;
+animation:blink 1.4s infinite both;
+}
+
+.dot:nth-child(2){animation-delay:0.2s}
+.dot:nth-child(3){animation-delay:0.4s}
+
+@keyframes blink{
+0%{opacity:.2}
+20%{opacity:1}
+100%{opacity:.2}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div class="card" id="app">
+
+<h1>Test de Comprensión Bíblica</h1>
+
+<p>Descubre en 30 segundos tu nivel de comprensión de la Biblia.</p>
+
+<p style="font-size:13px;">Más de 12.000 personas ya hicieron este test.</p>
+
+<button onclick="startQuiz()">COMENZAR TEST</button>
+
+</div>
+
+</div>
+
+<script>
+
+let step=0
+let answers=[]
+
+const questions=[
+
+{
+q:"Cuando lees la Biblia normalmente...",
+a:[
+"Entiendo bien lo que leo",
+"Entiendo algunas partes pero otras me confunden",
+"Muchas veces no entiendo el contexto",
+"Me cuesta comprender lo que significa"
+]
+},
+
+{
+q:"¿Qué es lo que más te gustaría entender?",
+a:[
+"El significado de los versículos",
+"El contexto de las historias bíblicas",
+"Cómo aplicar la Biblia en la vida diaria",
+"El mensaje completo de la Biblia"
+]
+},
+
+{
+q:"Cuando encuentras un pasaje difícil...",
+a:[
+"Busco explicación en internet",
+"Pregunto a alguien de la iglesia",
+"Sigo leyendo aunque no entienda",
+"Termino dejando esa parte"
+]
+},
+
+{
+q:"Si existiera una guía simple para entender la Biblia...",
+a:[
+"Me interesaría mucho",
+"Tal vez la probaría",
+"Dependería del contenido",
+"No estoy seguro"
+]
+}
+
+]
+
+function updateBar(){
+let percent=(step/questions.length)*100
+document.getElementById("bar").style.width=percent+"%"
+}
+
+function startQuiz(){
+showQuestion()
+}
+
+function showQuestion(){
+
+let q=questions[step]
+
+let html=`
+<h1>Pregunta ${step+1} de 4</h1>
+<p>${q.q}</p>
+`
+
+q.a.forEach((opt,i)=>{
+html+=`<div class="option" onclick="answer(${i})">${opt}</div>`
+})
+
+document.getElementById("app").innerHTML=html
+
+updateBar()
+}
+
+function answer(i){
+
+answers.push(i)
+
+step++
+
+if(step<questions.length){
+showQuestion()
+}else{
+showLoading()
+}
+
+}
+
+function showLoading(){
+
+document.getElementById("app").innerHTML=`
+
+<h1>Analizando tus respuestas</h1>
+
+<p>Cruzando referencias bíblicas</p>
+<p>Evaluando comprensión espiritual</p>
+
+<div class="loader">
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+
+`
+
+setTimeout(showLead,3000)
+
+}
+
+function showLead(){
+
+document.getElementById("bar").style.width="100%"
+
+document.getElementById("app").innerHTML=`
+
+<h1>Tu diagnóstico está listo</h1>
+
+<p>Ingresa tu nombre y WhatsApp para ver tu resultado.</p>
+
+<input id="name" placeholder="Nombre">
+
+<input id="phone" placeholder="WhatsApp (+52, +57...)">
+
+<button onclick="sendLead()">VER RESULTADO</button>
+
+`
+
+}
+
+function sendLead(){
+
+let name=document.getElementById("name").value
+let phone=document.getElementById("phone").value
+
+fetch("SEU_WEBHOOK_AQUI",{
+
+method:"POST",
+headers:{'Content-Type':'application/json'},
+
+body:JSON.stringify({
+name:name,
+phone:phone,
+answers:answers
+})
+
+})
+
+showResult()
+
+}
+
+function showResult(){
+
+document.getElementById("app").innerHTML=`
+
+<h1>Tu diagnóstico bíblico</h1>
+
+<div class="result">Nivel: Buscador de Entendimiento</div>
+
+<p>Lees la Biblia y tienes deseo de comprenderla mejor, pero muchas veces el significado profundo de los textos no es claro.</p>
+
+<p>Esto es muy común.</p>
+
+<p>Por eso muchas personas están utilizando una guía llamada <b>CÓDIGO DIVINO</b>.</p>
+
+<p>Un material diseñado para ayudarte a comprender la Biblia desde Génesis hasta Apocalipsis.</p>
+
+<button onclick="goOffer()">VER CÓDIGO DIVINO</button>
+
+`
+
+}
+
+function goOffer(){
+
+window.location.href="LINK_HOSTINGER"
+
+}
+
+</script>
+
+</body>
+</html>
