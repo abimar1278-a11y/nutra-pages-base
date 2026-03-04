@@ -7,6 +7,8 @@
 
 <title>Test Bíblico</title>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.css">
+
 <style>
 
 body{
@@ -63,7 +65,6 @@ border-radius:10px;
 padding:14px;
 margin:10px 0;
 cursor:pointer;
-transition:0.2s;
 border:1px solid #333;
 }
 
@@ -94,6 +95,12 @@ font-size:16px;
 color:#ff6b6b;
 font-size:14px;
 margin-top:8px;
+}
+
+.secure{
+font-size:13px;
+margin-top:10px;
+color:#9f9f9f;
 }
 
 .result{
@@ -150,10 +157,14 @@ animation:blink 1.4s infinite both;
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js"></script>
+
 <script>
 
 let step=0
 let answers=[]
+let iti
 
 const questions=[
 
@@ -273,7 +284,11 @@ document.getElementById("app").innerHTML=`
 
 <input id="name" placeholder="Nombre" required>
 
-<input id="phone" placeholder="WhatsApp (+52, +57...)" required>
+<input id="phone" type="tel">
+
+<div class="secure">
+🔒 Tu número será usado solo para enviarte tu resultado. No compartimos tu información.
+</div>
 
 <div id="error" class="error"></div>
 
@@ -281,30 +296,45 @@ document.getElementById("app").innerHTML=`
 
 `
 
+const phoneInput=document.querySelector("#phone")
+
+iti=window.intlTelInput(phoneInput,{
+
+initialCountry:"auto",
+
+geoIpLookup:function(callback){
+
+fetch("https://ipapi.co/json")
+.then(res=>res.json())
+.then(data=>callback(data.country_code))
+.catch(()=>callback("us"))
+
+},
+
+utilsScript:"https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js"
+
+})
+
 }
 
 function sendLead(){
 
 let name=document.getElementById("name").value.trim()
-let phone=document.getElementById("phone").value.trim()
 let error=document.getElementById("error")
 
 error.innerHTML=""
 
-if(name === ""){
+if(name===""){
 error.innerHTML="Por favor ingresa tu nombre."
 return
 }
 
-if(phone === ""){
-error.innerHTML="Por favor ingresa tu número de WhatsApp."
-return
-}
-
-if(phone.length < 8){
+if(!iti.isValidNumber()){
 error.innerHTML="Ingresa un número de WhatsApp válido."
 return
 }
+
+let phone=iti.getNumber()
 
 fetch("SEU_WEBHOOK_AQUI",{
 
