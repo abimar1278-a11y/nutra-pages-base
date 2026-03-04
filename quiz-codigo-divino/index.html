@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Test Bíblico</title>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.css">
 
 <style>
 
@@ -91,6 +90,19 @@ border:none;
 font-size:16px;
 }
 
+.phonebox{
+display:flex;
+justify-content:center;
+gap:6px;
+}
+
+.phonebox input:first-child{
+width:80px;
+text-align:center;
+background:#222;
+color:white;
+}
+
 .error{
 color:#ff6b6b;
 font-size:14px;
@@ -157,14 +169,10 @@ animation:blink 1.4s infinite both;
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/intlTelInput.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js"></script>
-
 <script>
 
 let step=0
 let answers=[]
-let iti
 
 const questions=[
 
@@ -280,38 +288,67 @@ document.getElementById("app").innerHTML=`
 
 <h1>Tu diagnóstico está listo</h1>
 
-<p>Ingresa tu nombre y WhatsApp para ver tu resultado.</p>
+<p>Ingresa tu nombre y WhatsApp para ver tu diagnóstico.</p>
 
-<input id="name" placeholder="Nombre" required>
+<input id="name" placeholder="Nombre">
 
-<input id="phone" type="tel">
+<div class="phonebox">
+
+<input id="country" readonly>
+
+<input id="phone" placeholder="DDD + número">
+
+</div>
 
 <div class="secure">
-🔒 Tu número será usado solo para enviarte tu resultado. No compartimos tu información.
+🔒 Tu número será usado solo para enviarte tu resultado.
 </div>
 
 <div id="error" class="error"></div>
 
-<button onclick="sendLead()">VER RESULTADO</button>
+<button onclick="sendLead()">VER MI RESULTADO</button>
 
 `
 
-const phoneInput=document.querySelector("#phone")
+detectCountry()
 
-iti=window.intlTelInput(phoneInput,{
+}
 
-initialCountry:"auto",
+function detectCountry(){
 
-geoIpLookup:function(callback){
-
-fetch("https://ipapi.co/json")
+fetch("https://ipapi.co/json/")
 .then(res=>res.json())
-.then(data=>callback(data.country_code))
-.catch(()=>callback("us"))
+.then(data=>{
 
-},
+let codes={
 
-utilsScript:"https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js"
+BR:"+55",
+MX:"+52",
+AR:"+54",
+CL:"+56",
+CO:"+57",
+PE:"+51",
+VE:"+58",
+BO:"+591",
+PY:"+595",
+UY:"+598",
+EC:"+593",
+
+GT:"+502",
+SV:"+503",
+HN:"+504",
+NI:"+505",
+CR:"+506",
+PA:"+507",
+
+DO:"+1",
+
+ES:"+34"
+
+}
+
+document.getElementById("country").value=
+codes[data.country_code] || "+1"
 
 })
 
@@ -320,6 +357,8 @@ utilsScript:"https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js"
 function sendLead(){
 
 let name=document.getElementById("name").value.trim()
+let phone=document.getElementById("phone").value.trim()
+let country=document.getElementById("country").value
 let error=document.getElementById("error")
 
 error.innerHTML=""
@@ -329,12 +368,12 @@ error.innerHTML="Por favor ingresa tu nombre."
 return
 }
 
-if(!iti.isValidNumber()){
+if(phone.length<6){
 error.innerHTML="Ingresa un número de WhatsApp válido."
 return
 }
 
-let phone=iti.getNumber()
+let fullPhone=country+phone
 
 fetch("SEU_WEBHOOK_AQUI",{
 
@@ -343,7 +382,7 @@ headers:{'Content-Type':'application/json'},
 
 body:JSON.stringify({
 name:name,
-phone:phone,
+phone:fullPhone,
 answers:answers
 })
 
@@ -363,11 +402,7 @@ document.getElementById("app").innerHTML=`
 
 <p>Lees la Biblia y tienes deseo de comprenderla mejor, pero muchas veces el significado profundo de los textos no es claro.</p>
 
-<p>Esto es muy común.</p>
-
 <p>Por eso muchas personas están utilizando una guía llamada <b>CÓDIGO DIVINO</b>.</p>
-
-<p>Un material diseñado para ayudarte a comprender la Biblia desde Génesis hasta Apocalipsis.</p>
 
 <button onclick="goOffer()">VER CÓDIGO DIVINO</button>
 
