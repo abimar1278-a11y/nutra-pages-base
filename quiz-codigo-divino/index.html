@@ -90,6 +90,12 @@ border:none;
 font-size:16px;
 }
 
+.error{
+color:#ff6b6b;
+font-size:14px;
+margin-top:8px;
+}
+
 .result{
 font-size:22px;
 color:#f2b705;
@@ -265,9 +271,11 @@ document.getElementById("app").innerHTML=`
 
 <p>Ingresa tu nombre y WhatsApp para ver tu resultado.</p>
 
-<input id="name" placeholder="Nombre">
+<input id="name" placeholder="Nombre" required>
 
-<input id="phone" placeholder="WhatsApp (+52, +57...)">
+<input id="phone" placeholder="WhatsApp (+52, +57...)" required>
+
+<div id="error" class="error"></div>
 
 <button onclick="sendLead()">VER RESULTADO</button>
 
@@ -277,8 +285,26 @@ document.getElementById("app").innerHTML=`
 
 function sendLead(){
 
-let name=document.getElementById("name").value
-let phone=document.getElementById("phone").value
+let name=document.getElementById("name").value.trim()
+let phone=document.getElementById("phone").value.trim()
+let error=document.getElementById("error")
+
+error.innerHTML=""
+
+if(name === ""){
+error.innerHTML="Por favor ingresa tu nombre."
+return
+}
+
+if(phone === ""){
+error.innerHTML="Por favor ingresa tu número de WhatsApp."
+return
+}
+
+if(phone.length < 8){
+error.innerHTML="Ingresa un número de WhatsApp válido."
+return
+}
 
 fetch("SEU_WEBHOOK_AQUI",{
 
