@@ -160,7 +160,7 @@ animation:blink 1.4s infinite both;
 
 let step=0
 let answers=[]
-let countryCode="+1"
+let countryCode="+55"
 
 const questions=[
 
@@ -280,7 +280,7 @@ document.getElementById("app").innerHTML=`
 
 <input id="name" placeholder="Nombre">
 
-<input id="phone" placeholder="+57 3001234567">
+<input id="phone" placeholder="">
 
 <div class="secure">
 🔒 Tu número será usado solo para enviarte tu resultado.
@@ -298,41 +298,28 @@ detectCountry()
 
 function detectCountry(){
 
-fetch("https://ipapi.co/json/")
-.then(res=>res.json())
-.then(data=>{
+let lang = navigator.language || navigator.userLanguage
 
-let codes={
+let codes = {
 
-BR:"+55",
-MX:"+52",
-AR:"+54",
-CL:"+56",
-CO:"+57",
-PE:"+51",
-VE:"+58",
-BO:"+591",
-PY:"+595",
-UY:"+598",
-EC:"+593",
-
-GT:"+502",
-SV:"+503",
-HN:"+504",
-NI:"+505",
-CR:"+506",
-PA:"+507",
-
-DO:"+1",
-ES:"+34"
+"pt-BR":"+55",
+"es-MX":"+52",
+"es-AR":"+54",
+"es-CL":"+56",
+"es-CO":"+57",
+"es-PE":"+51",
+"es-VE":"+58",
+"es-EC":"+593",
+"es-BO":"+591",
+"es-UY":"+598",
+"es-PY":"+595",
+"es-ES":"+34"
 
 }
 
-countryCode=codes[data.country_code] || "+1"
+countryCode = codes[lang] || "+55"
 
-document.getElementById("phone").placeholder=countryCode+" 3001234567"
-
-})
+document.getElementById("phone").placeholder = countryCode + " 11999999999"
 
 }
 
