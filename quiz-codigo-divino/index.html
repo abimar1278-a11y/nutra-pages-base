@@ -359,7 +359,10 @@ let fullPhone=phone.startsWith("+") ? phone : countryCode+phone
 fetch("https://script.google.com/macros/s/AKfycbwlVp1ymRbMErdHcrsemiAx1AZDwoWufcGqJQkW__iepQKVKSs4PX3bBvD7CWy6FZm85A/exec",{
 
 method:"POST",
-headers:{'Content-Type':'application/json'},
+mode:"no-cors",
+headers:{
+"Content-Type":"application/json"
+},
 
 body:JSON.stringify({
 name:name,
@@ -367,7 +370,7 @@ phone:fullPhone,
 answers:answers
 })
 
-})
+}).catch(err => console.log(err))
 
 showResult()
 
