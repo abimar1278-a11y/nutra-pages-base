@@ -160,7 +160,7 @@ animation:blink 1.4s infinite both;
 
 let step=0
 let answers=[]
-let countryCode="+55"
+let countryCode=""
 
 const questions=[
 
@@ -280,7 +280,7 @@ document.getElementById("app").innerHTML=`
 
 <input id="name" placeholder="Nombre">
 
-<input id="phone" placeholder="">
+<input id="phone" placeholder="+52 5512345678">
 
 <div class="secure">
 🔒 Tu número será usado solo para enviarte tu resultado.
@@ -317,9 +317,19 @@ let codes = {
 
 }
 
-countryCode = codes[lang] || "+55"
+if(codes[lang]){
 
-document.getElementById("phone").placeholder = countryCode + " 11999999999"
+countryCode = codes[lang]
+
+document.getElementById("phone").placeholder = countryCode + " 5512345678"
+
+}else{
+
+countryCode = ""
+
+document.getElementById("phone").placeholder = "+52 5512345678"
+
+}
 
 }
 
@@ -336,8 +346,8 @@ error.innerHTML="Por favor ingresa tu nombre."
 return
 }
 
-if(phone.length<6){
-error.innerHTML="Ingresa un número de WhatsApp válido."
+if(phone.length<8){
+error.innerHTML="Ingresa un número de WhatsApp válido con código de país."
 return
 }
 
