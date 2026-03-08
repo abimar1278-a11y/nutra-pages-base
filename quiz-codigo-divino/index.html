@@ -295,9 +295,9 @@ detectCountry()
 
 function detectCountry(){
 
-let lang = navigator.language || navigator.userLanguage
+let lang=navigator.language || navigator.userLanguage
 
-let codes = {
+let codes={
 
 "pt-BR":"+55",
 "es-MX":"+52",
@@ -315,11 +315,7 @@ let codes = {
 }
 
 if(codes[lang]){
-
 countryCode=codes[lang]
-
-document.getElementById("phone").placeholder = countryCode + " 5512345678"
-
 }
 
 }
@@ -337,11 +333,29 @@ error.innerHTML="Por favor ingresa tu nombre."
 return
 }
 
-let phoneRegex=/^\+[0-9]{10,15}$/
+let phoneRegex=/^[0-9]{8,15}$/
+
+if(phone.startsWith("+")){
+
+let fullRegex=/^\+[0-9]{10,15}$/
+
+if(!fullRegex.test(phone)){
+error.innerHTML="Número incorrecto. Ejemplo: +521234567890"
+return
+}
+
+}else{
 
 if(!phoneRegex.test(phone)){
-error.innerHTML="Número incorrecto. Escribe tu WhatsApp con código de país. Ejemplo: +521234567890"
+error.innerHTML="Número incorrecto. Solo números."
 return
+}
+
+if(countryCode===""){
+error.innerHTML="Escribe tu número con código de país. Ejemplo: +521234567890"
+return
+}
+
 }
 
 let fullPhone=phone.startsWith("+") ? phone : countryCode+phone
