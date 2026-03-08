@@ -280,7 +280,7 @@ document.getElementById("app").innerHTML=`
 
 <input id="name" placeholder="Nombre">
 
-<input id="phone" type="tel" placeholder="+52 5512345678" maxlength="16">
+<input id="phone" type="tel" placeholder="+52 5512345678" maxlength="15">
 
 <div class="secure">
 🔒 Tu número será usado solo para enviarte tu resultado.
@@ -338,21 +338,20 @@ error.innerHTML="Nombre inválido. Escribe solo letras."
 return
 }
 
-let phoneDigits=phone.replace(/\D/g,"")
+let phoneRegexNumbers=/^[0-9]{10,15}$/
+let phoneRegexFull=/^\+[0-9]{10,15}$/
 
 if(phone.startsWith("+")){
 
-let fullRegex=/^\+[0-9]{10,15}$/
-
-if(!fullRegex.test(phone)){
+if(!phoneRegexFull.test(phone)){
 error.innerHTML="Número incorrecto. Ejemplo: +521234567890"
 return
 }
 
 }else{
 
-if(phoneDigits.length<10 || phoneDigits.length>15){
-error.innerHTML="Número incorrecto. Debe incluir código de país y número."
+if(!phoneRegexNumbers.test(phone)){
+error.innerHTML="Número incorrecto. Usa solo números."
 return
 }
 
@@ -363,7 +362,7 @@ return
 
 }
 
-let fullPhone=phone.startsWith("+") ? phone : countryCode+phoneDigits
+let fullPhone=phone.startsWith("+") ? phone : countryCode+phone
 
 fetch("https://script.google.com/macros/s/AKfycbz5FdZ_oE48PQIyxttsXMvb-GrxZkPreqnlM85hDc4FmDNJIWbTK4aEHYIlYMCyYp5irA/exec",{
 
