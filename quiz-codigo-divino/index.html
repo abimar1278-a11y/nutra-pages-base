@@ -236,7 +236,6 @@ updateBar()
 function answer(i){
 
 answers.push(i)
-
 step++
 
 if(step<questions.length){
@@ -252,7 +251,6 @@ function showLoading(){
 document.getElementById("app").innerHTML=`
 
 <h1>Analizando tus respuestas</h1>
-
 <p>Cruzando referencias bíblicas</p>
 <p>Evaluando comprensión espiritual</p>
 
@@ -275,12 +273,11 @@ document.getElementById("bar").style.width="100%"
 document.getElementById("app").innerHTML=`
 
 <h1>Tu diagnóstico está listo</h1>
-
 <p>Ingresa tu nombre y WhatsApp para ver tu diagnóstico.</p>
 
 <input id="name" placeholder="Nombre">
 
-<input id="phone" placeholder="+52 5512345678">
+<input id="phone" type="tel" placeholder="+52 5512345678" maxlength="16">
 
 <div class="secure">
 🔒 Tu número será usado solo para enviarte tu resultado.
@@ -319,15 +316,9 @@ let codes = {
 
 if(codes[lang]){
 
-countryCode = codes[lang]
+countryCode=codes[lang]
 
 document.getElementById("phone").placeholder = countryCode + " 5512345678"
-
-}else{
-
-countryCode = ""
-
-document.getElementById("phone").placeholder = "+52 5512345678"
 
 }
 
@@ -346,8 +337,10 @@ error.innerHTML="Por favor ingresa tu nombre."
 return
 }
 
-if(phone.length<8){
-error.innerHTML="Ingresa un número de WhatsApp válido con código de país."
+let phoneRegex=/^\+[0-9]{10,15}$/
+
+if(!phoneRegex.test(phone)){
+error.innerHTML="Número incorrecto. Escribe tu WhatsApp con código de país. Ejemplo: +521234567890"
 return
 }
 
@@ -367,7 +360,7 @@ phone:fullPhone,
 answers:answers
 })
 
-}).catch(err => console.log(err))
+}).catch(err=>console.log(err))
 
 showResult()
 
