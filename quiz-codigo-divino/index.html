@@ -34,8 +34,6 @@ box-shadow:0 0 20px rgba(0,0,0,0.5);
 text-align:center;
 }
 
-/* PERGUNTAS EM AMARELO */
-
 h1{
 font-size:24px;
 margin-bottom:10px;
@@ -61,8 +59,6 @@ border-radius:10px;
 transition:0.4s;
 }
 
-/* CAIXAS DAS RESPOSTAS */
-
 .option{
 background:#222;
 border-radius:10px;
@@ -75,7 +71,6 @@ transition:0.2s;
 
 .option:hover{
 background:#2a2a2a;
-border:1px solid #f2b705;
 }
 
 button{
@@ -86,27 +81,6 @@ border-radius:8px;
 font-size:16px;
 margin-top:20px;
 cursor:pointer;
-}
-
-input{
-width:90%;
-padding:12px;
-margin:8px;
-border-radius:6px;
-border:none;
-font-size:16px;
-}
-
-.secure{
-font-size:13px;
-margin-top:10px;
-color:#9f9f9f;
-}
-
-.error{
-color:#ff6b6b;
-font-size:14px;
-margin-top:8px;
 }
 
 .result{
@@ -180,7 +154,6 @@ Más de 12.000 personas ya hicieron este diagnóstico espiritual.
 
 let step=0
 let answers=[]
-let countryCode=""
 
 const questions=[
 
@@ -215,7 +188,7 @@ a:[
 },
 
 {
-q:"Si existiera una guía simple para comprender la Biblia de forma clara y sencilla, sin confusión...",
+q:"Si existiera una guía simple para comprender la Biblia de forma clara y sencilla...",
 a:[
 "Me interesaría mucho",
 "Me gustaría aprender cómo",
@@ -284,130 +257,13 @@ document.getElementById("app").innerHTML=`
 
 `
 
-setTimeout(showLead,3000)
-
-}
-
-function showLead(){
-
-document.getElementById("bar").style.width="100%"
-
-document.getElementById("app").innerHTML=`
-
-<h1>Tu diagnóstico bíblico personalizado está listo</h1>
-
-<p>
-Para ver tu resultado y recibirlo en tu WhatsApp,
-ingresa tu nombre y tu número.
-</p>
-
-<input id="name" placeholder="Nombre">
-
-<input id="phone" type="tel" placeholder="+52 5512345678" maxlength="15">
-
-<div class="secure">
-🔒 Tu número será usado solo para enviarte tu resultado.
-</div>
-
-<div id="error" class="error"></div>
-
-<button onclick="sendLead()">VER MI RESULTADO</button>
-
-`
-
-detectCountry()
-
-}
-
-function detectCountry(){
-
-let lang = navigator.language || navigator.userLanguage
-
-let codes = {
-
-"pt-BR":"+55",
-"es-MX":"+52",
-"es-AR":"+54",
-"es-CL":"+56",
-"es-CO":"+57",
-"es-PE":"+51",
-"es-VE":"+58",
-"es-EC":"+593",
-"es-BO":"+591",
-"es-UY":"+598",
-"es-PY":"+595",
-"es-ES":"+34"
-
-}
-
-if(codes[lang]){
-countryCode=codes[lang]
-}
-
-}
-
-function sendLead(){
-
-let name=document.getElementById("name").value.trim()
-let phone=document.getElementById("phone").value.trim()
-let error=document.getElementById("error")
-
-error.innerHTML=""
-
-let nameRegex=/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,50}$/
-
-if(!nameRegex.test(name)){
-error.innerHTML="Nombre inválido. Escribe solo letras."
-return
-}
-
-let phoneRegexNumbers=/^[0-9]{10,15}$/
-let phoneRegexFull=/^\+[0-9]{10,15}$/
-
-if(phone.startsWith("+")){
-
-if(!phoneRegexFull.test(phone)){
-error.innerHTML="Número incorrecto. Ejemplo: +521234567890"
-return
-}
-
-}else{
-
-if(!phoneRegexNumbers.test(phone)){
-error.innerHTML="Número incorrecto. Usa solo números."
-return
-}
-
-if(countryCode===""){
-error.innerHTML="Escribe tu número con código de país. Ejemplo: +521234567890"
-return
-}
-
-}
-
-let fullPhone=phone.startsWith("+") ? phone : countryCode+phone
-
-fetch("https://script.google.com/macros/s/AKfycbz5FdZ_oE48PQIyxttsXMvb-GrxZkPreqnlM85hDc4FmDNJIWbTK4aEHYIlYMCyYp5irA/exec",{
-
-method:"POST",
-mode:"no-cors",
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-name:name,
-phone:fullPhone,
-answers:answers
-})
-
-}).catch(err=>console.log(err))
-
-showResult()
+setTimeout(showResult,3000)
 
 }
 
 function showResult(){
+
+document.getElementById("bar").style.width="100%"
 
 document.getElementById("app").innerHTML=`
 
@@ -415,20 +271,16 @@ document.getElementById("app").innerHTML=`
 ✔ Test completado
 </p>
 
-<p>Según tus respuestas en el test...</p>
+<p>Según tus respuestas...</p>
 
 <h1>Tu diagnóstico bíblico es</h1>
 
-<div class="result">Nivel: Buscador de Entendimiento</div>
+<div class="result">Buscador de Entendimiento</div>
 
 <p>
 Lees la Biblia con fe y deseo de aprender,
 pero muchas veces el significado profundo de los textos
 no es completamente claro.
-</p>
-
-<p>
-Esto es algo muy común entre quienes desean crecer espiritualmente.
 </p>
 
 <p>
@@ -438,19 +290,18 @@ Por esta razón, muchas personas están utilizando una guía llamada
 
 <p>
 Una guía diseñada para ayudarte a comprender la Biblia
-de forma clara, organizada y sin confusión,
-desde Génesis hasta Apocalipsis.
+de forma clara y organizada.
 </p>
 
-<button onclick="goOffer()">VER CÓDIGO DIVINO</button>
+<button onclick="goWhats()">QUIERO ENTENDER LA BIBLIA</button>
 
 `
 
 }
 
-function goOffer(){
+function goWhats(){
 
-window.location.href="LINK_HOSTINGER"
+window.location.href="https://wa.me/556492265617?text=Quiero%20entender%20la%20Biblia"
 
 }
 
