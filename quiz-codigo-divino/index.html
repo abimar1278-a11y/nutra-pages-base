@@ -17,7 +17,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 // ID do seu pixel
 fbq('init', '1514872139615435'); 
 
-// Evento padrão de visualização de página
+// Evento padrão (visualização da página)
 fbq('track', 'PageView');
 </script>
 
@@ -229,6 +229,11 @@ function answer(i){
 answers.push(i)
 step++
 
+// 🔥 EVENTO: ENGAGEMENT (usuário respondeu 2 perguntas)
+if(step === 2){
+    fbq('trackCustom', 'EngajamentoAlto');
+}
+
 if(step<questions.length){
 showQuestion()
 }else{
@@ -261,6 +266,9 @@ setTimeout(showResult,3000)
 
 // Tela final com botão
 function showResult(){
+
+// 🔥 EVENTO: QUIZ COMPLETO
+fbq('track', 'CompleteRegistration');
 
 document.getElementById("bar").style.width="100%"
 
@@ -298,11 +306,11 @@ de forma clara y organizada.
 
 }
 
-// 🔥 FUNÇÃO MAIS IMPORTANTE (AQUI ESTÁ O OURO)
+// 🔥 EVENTO MAIS IMPORTANTE (LEAD)
 function goWhats(){
 
-// Evento de LEAD (Facebook entende que virou lead)
-fbq('track', 'Lead'); 
+// Dispara evento de lead (clique no WhatsApp)
+fbq('track', 'Lead');
 
 // Redireciona para o WhatsApp
 window.location.href="https://wa.me/556492265617?text=Quiero%20entender%20la%20Biblia"
