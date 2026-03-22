@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-
+  
 <head>
 <!-- Meta Pixel Code -->
 <script>
+// Inicializa o pixel do Facebook
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -13,7 +14,10 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
+// ID do seu pixel
 fbq('init', '1514872139615435'); 
+
+// Evento padrão de visualização de página
 fbq('track', 'PageView');
 </script>
 
@@ -29,7 +33,6 @@ src="https://www.facebook.com/tr?id=1514872139615435&ev=PageView&noscript=1"/>
 <title>Test Bíblico</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial;
@@ -130,7 +133,6 @@ animation:blink 1.4s infinite both;
 20%{opacity:1}
 100%{opacity:.2}
 }
-
 </style>
 
 </head>
@@ -138,13 +140,11 @@ animation:blink 1.4s infinite both;
 <body>
 
 <div class="container">
-
 <div class="progress">
 <div class="bar" id="bar"></div>
 </div>
 
 <div class="card" id="app"></div>
-
 </div>
 
 <script>
@@ -152,6 +152,7 @@ animation:blink 1.4s infinite both;
 let step=0
 let answers=[]
 
+// Perguntas do quiz
 const questions=[
 
 {
@@ -196,11 +197,13 @@ a:[
 
 ]
 
+// Atualiza barra de progresso
 function updateBar(){
 let percent=(step/questions.length)*100
 document.getElementById("bar").style.width=percent+"%"
 }
 
+// Mostra perguntas
 function showQuestion(){
 
 let q=questions[step]
@@ -220,6 +223,7 @@ updateBar()
 
 }
 
+// Captura resposta
 function answer(i){
 
 answers.push(i)
@@ -233,6 +237,7 @@ showLoading()
 
 }
 
+// Tela de análise
 function showLoading(){
 
 document.getElementById("app").innerHTML=`
@@ -254,6 +259,7 @@ setTimeout(showResult,3000)
 
 }
 
+// Tela final com botão
 function showResult(){
 
 document.getElementById("bar").style.width="100%"
@@ -292,12 +298,18 @@ de forma clara y organizada.
 
 }
 
+// 🔥 FUNÇÃO MAIS IMPORTANTE (AQUI ESTÁ O OURO)
 function goWhats(){
 
+// Evento de LEAD (Facebook entende que virou lead)
+fbq('track', 'Lead'); 
+
+// Redireciona para o WhatsApp
 window.location.href="https://wa.me/556492265617?text=Quiero%20entender%20la%20Biblia"
 
 }
 
+// Inicia quiz direto
 showQuestion()
 
 </script>
