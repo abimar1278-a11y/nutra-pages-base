@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
-  
+
 <head>
 
 <!-- UTMIFY PIXEL -->
 <script>
   window.pixelId = "69fe5f564c5dc43cb369230a";
+
   var a = document.createElement("script");
   a.setAttribute("async", "");
   a.setAttribute("defer", "");
   a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+
   document.head.appendChild(a);
 </script>
 
@@ -19,6 +21,7 @@
 <title>Test Bíblico</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial;
@@ -90,6 +93,7 @@ border-radius:8px;
 font-size:16px;
 margin-top:20px;
 cursor:pointer;
+font-weight:bold;
 }
 
 .result{
@@ -111,14 +115,20 @@ display:inline-block;
 animation:blink 1.4s infinite both;
 }
 
-.dot:nth-child(2){animation-delay:0.2s}
-.dot:nth-child(3){animation-delay:0.4s}
+.dot:nth-child(2){
+animation-delay:0.2s
+}
+
+.dot:nth-child(3){
+animation-delay:0.4s
+}
 
 @keyframes blink{
 0%{opacity:.2}
 20%{opacity:1}
 100%{opacity:.2}
 }
+
 </style>
 
 </head>
@@ -126,19 +136,21 @@ animation:blink 1.4s infinite both;
 <body>
 
 <div class="container">
+
 <div class="progress">
 <div class="bar" id="bar"></div>
 </div>
 
 <div class="card" id="app"></div>
+
 </div>
 
 <script>
 
-let step=0
-let answers=[]
+let step = 0;
+let answers = [];
 
-const questions=[
+const questions = [
 
 {
 q:"¿Lees la Biblia… pero muchas veces no entiendes su verdadero significado?",
@@ -180,57 +192,67 @@ a:[
 ]
 }
 
-]
+];
 
 function updateBar(){
-let percent=(step/questions.length)*100
-document.getElementById("bar").style.width=percent+"%"
+
+let percent = (step / questions.length) * 100;
+
+document.getElementById("bar").style.width = percent + "%";
+
 }
 
 function showQuestion(){
 
-let q=questions[step]
+let q = questions[step];
 
-let html=`
-<h1>Pregunta ${step+1} de 4</h1>
+let html = `
+<h1>Pregunta ${step + 1} de 4</h1>
 <p>${q.q}</p>
-`
+`;
 
 q.a.forEach((opt,i)=>{
-html+=`<div class="option" onclick="answer(${i})">${opt}</div>`
-})
 
-document.getElementById("app").innerHTML=html
+html += `
+<div class="option" onclick="answer(${i})">
+${opt}
+</div>
+`;
 
-updateBar()
+});
+
+document.getElementById("app").innerHTML = html;
+
+updateBar();
 
 }
 
 function answer(i){
 
-answers.push(i)
-step++
+answers.push(i);
 
-// Evento de engajamento (meio do quiz)
-if(step === 2){
-    fbq('track', 'ViewContent');
-}
+step++;
 
-if(step<questions.length){
-showQuestion()
+if(step < questions.length){
+
+showQuestion();
+
 }else{
-showLoading()
+
+showLoading();
+
 }
 
 }
 
 function showLoading(){
 
-document.getElementById("app").innerHTML=`
+document.getElementById("app").innerHTML = `
 
 <h1>Analizando tus respuestas</h1>
 
 <p>Cruzando referencias bíblicas</p>
+
 <p>Evaluando comprensión espiritual</p>
 
 <div class="loader">
@@ -239,20 +261,17 @@ document.getElementById("app").innerHTML=`
 <span class="dot"></span>
 </div>
 
-`
+`;
 
-setTimeout(showResult,3000)
+setTimeout(showResult,3000);
 
 }
 
 function showResult(){
 
-// 🔥 Evento forte de lead
-fbq('track', 'Lead');
+document.getElementById("bar").style.width = "100%";
 
-document.getElementById("bar").style.width="100%"
-
-document.getElementById("app").innerHTML=`
+document.getElementById("app").innerHTML = `
 
 <p style="color:#4CAF50;font-weight:bold;">
 ✔ Test completado
@@ -262,48 +281,52 @@ document.getElementById("app").innerHTML=`
 
 <h1>Tu diagnóstico bíblico es</h1>
 
-<div class="result">Buscador de Entendimiento</div>
+<div class="result">
+Buscador de Entendimiento
+</div>
 
 <p>
 Lees la Biblia con fe y deseo de aprender,
-pero muchas veces el significado profundo de los textos
-no es completamente claro.
+pero muchas veces el significado profundo
+de los textos no es completamente claro.
 </p>
 
 <p>
-Por esta razón, muchas personas están utilizando una guía llamada
+Por esta razón, muchas personas están utilizando
+una guía llamada
 <b style="color:#f2b705;">CÓDIGO DIVINO</b>.
 </p>
 
 <p>
-Una guía diseñada para ayudarte a comprender la Biblia
-de forma clara y organizada.
+Una guía diseñada para ayudarte a comprender
+la Biblia de forma clara y organizada.
 </p>
 
-<button onclick="goWhats()">QUIERO ENTENDER LA BIBLIA</button>
+<button onclick="goWhats()">
+QUIERO ENTENDER LA BIBLIA
+</button>
 
-`
+`;
 
 }
 
-// 🔥 OTIMIZAÇÃO PRINCIPAL AQUI
 function goWhats(){
 
 console.log("Lead altamente qualificado");
 
-// intenção de compra
+// EVENTO PRINCIPAL
 fbq('track', 'InitiateCheckout');
 
-// lead reforçado
-fbq('track', 'Lead');
-
 setTimeout(function(){
-window.location.href="https://wa.me/556492265617?text=Quiero%20entender%20la%20Biblia"
+
+window.location.href =
+"https://wa.me/556492265617?text=Quiero%20entender%20la%20Biblia";
+
 }, 800);
 
 }
 
-showQuestion()
+showQuestion();
 
 </script>
 
